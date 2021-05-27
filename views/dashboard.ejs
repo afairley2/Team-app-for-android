@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">SMYO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/items/addNewItem">Add new item</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/outfits/createOutfit">Create Outfit</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/outfits/seeOutfits">Show Outfits</a>
+      </li>
+     
+    </ul>
+
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Welcome <%=name%>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      
+        <a class="dropdown-item" href="#">My Profile</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" href="/users/logout">Logout</a>
+      </div>
+    </div>
+
+    
+   
+  </div>
+</nav>
+
+  <div class="jumbotron">
+    <h1 class="display-3">Hello, <%=name%>!</h1>
+    <p class="lead">I am SMYO, the best place to show out your outfit!</p>
+    <hr class="my-4">
+    <p>Create, share, get inspiring ideas and many more!</p>
+   
+  </div>
+
+  <form action="/posts/newPost" method="GET">
+    <input type="submit" class="btn btn-success btn-block" value="New Post">
+  </form>
+  
+  
+  
+    <% posts.forEach(function(post,index){%>
+      
+      <div class="text-center">
+      <div class="card mb-3">
+        <h5 class="card-header"><%=post.description%></h5>
+        <div class="card-body">
+          <h5 class="card-title">Added by <%=post.ownerName%></h5>
+          <img src="image/<%=photos[index].filename%>" alt="" class="rounded" width="80%" >
+        </div>
+        
+        
+       
+        <div class="card-body">
+          <a href="/posts/addLike" class="card-link">Like</a>
+          <a href="#" class="card-link">Share</a>
+
+
+          <form action="/posts/deletePost/" method="POST">
+            <input type="hidden" id="id" name="id" value = "<%= post._id %>">
+            <input type="hidden" id="imageId" name="imageId" value = "<%= post.imageID %>">
+            <input type="hidden" id="ownerID" name="ownerID" value = "<%= post.ownerID %>">
+
+            <% if(post.ownerID == userID ) {%>
+            <input type="submit" class="btn btn-danger btn-block" value="Delete Post">
+            <%}%>
+
+            <% if(post.ownerID != userID ) {%>
+              <input type="hidden" class="btn btn-success btn-block" value="Delete Post">
+              <%}%>
+          </form>
+            
+          
+        </div>
+        <div class="card-footer text-muted">
+          <%=post.uploadDate.toString().slice(0,16)%>
+        </div>
+      </div>
+    </div>
+      
+    <%})%>
+
+
+
+
+
+        

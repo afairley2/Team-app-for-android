@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">SMYO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/items/addNewItem">Add new item</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/outfits/createOutfit">Create Outfit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/outfits/seeOutfits">Show Outfits</a>
+        </li>
+       
+      </ul>
+
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome <%=name%>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        
+          <a class="dropdown-item" href="#">My Profile</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="/users/logout">Logout</a>
+        </div>
+      </div>
+
+      
+     
+    </div>
+  </nav>
+
+  <h1>Create a Post</h1>
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+        
+
+            <form action="/posts/upload" method="POST" enctype="multipart/form-data">
+                    
+                <div class="custom-file mb-3">
+                    <label for="file">Choose a photo</label>
+                    <input type="file" name="file" id="file" class="form-control-file" aria-describedby="fileHelp">
+                </div>
+
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+
+                <label for="outfitPick">Chose a relevant outfit from your list of outfits</label>
+                <select type="outfitPick" id="outfitPick" name="outfitPick" class="browser-default custom-select">
+                  <option selected value="None">No outfit</option>
+                  <% outfits.forEach(function(outfit, index){ %>
+                    <option value="<%=outfit.outfitName%>"><%=outfit.outfitName%></option>
+                  <% }) %>
+                </select>
+
+                <input type="submit" class="btn btn-success btn-block" value="Create Post">
+                <a href="javascript:history.back()" class="btn btn-danger btn-block">Go Back</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>

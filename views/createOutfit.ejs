@@ -1,0 +1,136 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">SMYO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/items/addNewItem">Add new item</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/outfits/createOutfit">Create Outfit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/outfits/seeOutfits">Show Outfits</a>
+        </li>
+       
+      </ul>
+
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome <%=name%>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        
+          <a class="dropdown-item" href="#">My Profile</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="/users/logout">Logout</a>
+        </div>
+      </div>
+
+      
+     
+    </div>
+  </nav>
+
+<h1>Create Outfit Page</h1>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+        
+
+            <form method="POST">
+                <div class="form-group">
+                    <label for="outfitName">Name your outfit: </label> 
+                    <input type="text" id="outfitName" name="outfitName"></br>
+
+                    <label for='hats'>Choose a hat</label>
+                    <select type="hats" id="hats" name="hats" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% hatList.forEach(function(hat, index){ %>
+                            <option value="<%= hat._id%>"><%= hat.brand %>, <%= hat.colour%></option>
+                        <% }) %>
+                    </select>   
+
+                    <label for='scarfs'>Choose a scarf</label>
+                    <select type="scarfs" id="scarfs" name="scarfs" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% scarfList.forEach(function(scarf, index){ %>
+                            <option value="<%= scarf._id%>"><%= scarf.brand %>, <%= scarf.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='tShirts'>Choose a t-shirt</label>
+                    <select type="tShirts" id="tShirts" name="tShirts" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% tshirtList.forEach(function(tshirt, index){ %>
+                            <option value="<%= tshirt._id%>"><%= tshirt.brand %>, <%= tshirt.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='shirts'>Choose a shirt</label>
+                    <select type="shirts" id="shirts" name="shirts" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% shirtList.forEach(function(shirt, index){ %>
+                            <option value="<%= shirt._id%>"><%= shirt.brand %>, <%= shirt.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='trousers'>Choose trousers</label>
+                    <select type="trousers" id="trousers" name="trousers" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% trouserList.forEach(function(trouser, index){ %>
+                            <option value="<%= trouser._id%>"><%= trouser.brand %>, <%= trouser.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='dress'>Choose a dress</label>
+                    <select type="dresses" id="dresses" name="dresses" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% dressList.forEach(function(dress, index){ %>
+                            <option value="<%= dress._id%>"><%= dress.brand %>, <%= dress.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='shorts'>Choose shorts</label>
+                    <select type="shorts" id="shorts" name="shorts" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% shortList.forEach(function(short, index){ %>
+                            <option value="<%= short._id%>"><%= short.brand %>, <%= short.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='skirts'>Choose a skirt</label>
+                    <select type="skirts" id="skirts" name="skirts" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% skirtList.forEach(function(skirt, index){ %>
+                            <option value="<%= skirt._id%>"><%= skirt.brand %>, <%= skirt.colour%></option>
+                        <% }) %>
+                    </select>
+
+                    <label for='shoes'>Choose shoes</label>
+                    <select type="shoes" id="shoes" name="shoes" class="browser-default custom-select">
+                        <option selected value="None">---</option>
+                        <% shoeList.forEach(function(shoe, index){ %>
+                            <option value="<%= shoe._id%>"><%= shoe.brand %>, <%= shoe.colour%></option>
+                        <% }) %>
+                    </select>
+                    
+                </div>
+
+                <input type="submit" class="btn btn-success btn-block" value="Add outfit">
+                <a href="javascript:history.back()" class="btn btn-danger btn-block">Go Back</a>
+
+            </form>
+
+        </div>
+    </div>
+</div>

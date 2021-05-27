@@ -1,0 +1,7 @@
+#logo_container {
+    background-image: url("/images/logo.png");
+    width: 100vw;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
